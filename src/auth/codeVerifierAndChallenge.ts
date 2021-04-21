@@ -28,9 +28,13 @@ const base64urlencode = (arrayBuffer: ArrayBuffer): string => {
     .replace(/=+$/, "");
 }
 
-export const generateCodeChallengeFromVerifier = async (): Promise<string> => {
+type pkceData = {
+  codeChallenge: string;
+  verifier: string;
+}
+export const generateCodeChallengeFromVerifier = async (): Promise<pkceData> => {
   const verifier = generateCodeVerifier();
   var hashed = await sha256(verifier);
-  var base64encoded = base64urlencode(hashed);
-  return base64encoded;
+  var codeChallenge = base64urlencode(hashed);
+  return { codeChallenge, verifier };
 }
