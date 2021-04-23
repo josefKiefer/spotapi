@@ -9,6 +9,15 @@ export type AuthState = {
   verifier: string;
 }
 
+export type Track = {
+  name: string;
+}
+
+export type TracksState = {
+  items: Track[];
+}
+
 export type AppState = {
-  auth: AuthState
+  auth: AuthState,
+  tracks: TracksState
 };

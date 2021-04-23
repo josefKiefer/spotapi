@@ -9,7 +9,8 @@ export const redirect = async (): Promise<string> => {
   const { codeChallenge, verifier } = await generateCodeChallengeFromVerifier();
   document.cookie = `spotapi-verifier=${verifier}`;
 
-  window.location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodedUri}&code_challenge_method=S256&code_challenge=${codeChallenge}`;
+  const scope = encodeURIComponent('user-top-read');
+  window.location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodedUri}&code_challenge_method=S256&code_challenge=${codeChallenge}&scope=${scope}`;
   
   return verifier;
 }

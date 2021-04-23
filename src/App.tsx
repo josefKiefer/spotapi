@@ -1,5 +1,7 @@
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { authorizeAsync, getToken } from './slices/authSlice';
+import LandingPage from './components/LandingPage';
 
 export default function App() {
   const dispatch = useDispatch(); 
@@ -9,16 +11,18 @@ export default function App() {
   }
 
   return (
-    <div>
-      {window.location.href.includes('code') ? <h1>authorized!</h1> :
+    <div className="d-flex flex-wrap justify-content-center position-absolute w-100 h-100 align-items-center align-content-center">
       <div>
-          <button
-            onClick={() => dispatch(authorizeAsync())}
-          >
-            Authorize
-          </button>
+        {window.location.href.includes('code') ? <LandingPage /> :
+        <div>
+            <button
+              onClick={() => dispatch(authorizeAsync())}
+            >
+              Authorize
+            </button>
+        </div>
+      }   
       </div>
-    }   
     </div>
   );
 }
