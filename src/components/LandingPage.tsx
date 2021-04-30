@@ -1,26 +1,41 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { getToken, selectToken } from '../slices/authSlice';
-import { getTopTracks, selectTracks } from '../slices/tracksSlice';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { getToken } from '../slices/authSlice';
+import Authorize from './Authorize';
+import Footer from './Footer';
+import Header from './Header';
+import Home from './home';
+import TopTracks from './TopTracks';
+import '../styles.css';
 
-export default function LandingPage() {
-  const tracks = useSelector(selectTracks);
-  const token = useSelector(selectToken);
-  const dispatch = useDispatch(); 
+export default function LandingPage(): JSX.Element {
+    const dispatch = useDispatch();
 
-  if (window.location.href.includes('code')) {
-    dispatch(getToken());
-  }
+    if (window.location.href.includes('code')) {
+        dispatch(getToken());
+    }
 
-  return (
-    <div>
-      <button
-        onClick={() => dispatch(getTopTracks(token))}
-      >
-        Get top tracks
-      </button>
-      {tracks ? tracks.map(track => (
-      <div key={track.name}>{track.name}</div>
-    )) : <></>}
-    </div>
-  );
+    return (
+        <div className="masthead">
+            <Header />
+            <header className="bg-primary text-white text-center">
+                <div className="container d-flex align-items-center flex-column">
+                    <h1 className="masthead-heading text-uppercase mb-2">
+                        SpotAPI
+                    </h1>
+                    <div className="divider-custom divider-light">
+                        <div className="divider-custom-line"></div>
+                        <div className="divider-custom-line"></div>
+                    </div>
+                </div>
+            </header>
+            {window.location.href.includes('code') ? (
+                <TopTracks />
+            ) : (
+                <Authorize />
+            )}
+            {/* <Home /> */}
+            <Footer />
+        </div>
+    );
 }
