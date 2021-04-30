@@ -3,9 +3,9 @@ import Axios from 'axios';
 import { AppState, Artist, ArtistTerm, Term } from '../state/appState';
 
 const initialState: ArtistTerm = {
-    [Term.short_term]: [],
-    [Term.medium_term]: [],
-    [Term.long_term]: [],
+    [Term.short_term]: { items: [] },
+    [Term.medium_term]: { items: [] },
+    [Term.long_term]: { items: [] },
 };
 
 export const getTopArtists = createAsyncThunk(

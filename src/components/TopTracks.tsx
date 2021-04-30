@@ -27,7 +27,6 @@ export default function TopTracks(): JSX.Element {
         }
     };
 
-    let key: keyof typeof artists;
     if (window.location.href.includes('code') && !token) {
         dispatch(getToken());
     }
@@ -73,16 +72,14 @@ export default function TopTracks(): JSX.Element {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6 col-lg-4 mb-5">
-                            <h2 className="page-section-heading text-center text-uppercase text-secondary mb-5 mt-2">
-                                Top Artists
-                            </h2>
-                            <div
-                                className="portfolio-item mx-auto"
-                                data-toggle="modal"
-                                data-target="#portfolioModal1"
-                            >
-                                <div className="text-center">
+                        <table className="col-md-6 col-lg-4 mb-5">
+                            <tbody>
+                                <tr>
+                                    <h2 className="page-section-heading text-center text-uppercase text-secondary mb-5 mt-2">
+                                        Top Artists
+                                    </h2>
+                                </tr>
+                                <tr>
                                     <button
                                         onClick={() =>
                                             dispatch(getTopArtists(token))
@@ -91,23 +88,17 @@ export default function TopTracks(): JSX.Element {
                                     >
                                         Get top Artists
                                     </button>
-                                    {console.log(artists[artistsTerm])}
-                                    {artists[artistsTerm].map(
-                                        (artist: Artist) => (
-                                            <div
-                                                key={artist.name}
-                                                style={{ color: 'white' }}
-                                            >
-                                                {artist.name}
-                                            </div>
-                                        )
-                                    )}
+                                </tr>
+                                <tr>
                                     <label
                                         htmlFor="customRange1"
                                         className="form-label"
+                                        style={{ color: 'white' }}
                                     >
-                                        Example range
+                                        {Term[artistsTerm].replace('_', ' ')}
                                     </label>
+                                </tr>
+                                <tr>
                                     <input
                                         type="range"
                                         className="form-range"
@@ -119,9 +110,21 @@ export default function TopTracks(): JSX.Element {
                                             setTerm(event.target.value)
                                         }
                                     />
-                                </div>
-                            </div>
-                        </div>
+                                </tr>
+                                {artists[artistsTerm].items.map(
+                                    (artist: Artist) => (
+                                        <tr
+                                            key={artist.name}
+                                            style={{
+                                                color: 'white',
+                                            }}
+                                        >
+                                            {artist.name}
+                                        </tr>
+                                    )
+                                )}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>
