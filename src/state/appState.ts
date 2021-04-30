@@ -13,7 +13,7 @@ export type Track = {
     name: string;
 };
 
-export type TracksState = {
+export type Tracks = {
     items: Track[];
 };
 
@@ -33,8 +33,29 @@ export enum Term {
     long_term,
 }
 
+export enum PersonalizationTypes {
+    tracks,
+    artists,
+}
+
+export type Media = {
+    name: string;
+};
+
+export type PersonalizationTerm = {
+    type: PersonalizationTypes;
+    [Term.short_term]: { items: Media[] };
+    [Term.medium_term]: { items: Media[] };
+    [Term.long_term]: { items: Media[] };
+};
+export type Personalization = {
+    [PersonalizationTypes.tracks]: PersonalizationTerm;
+    [PersonalizationTypes.artists]: PersonalizationTerm;
+};
+
 export type AppState = {
     auth: AuthState;
-    tracks: TracksState;
+    // tracks: TracksState;
     artists: ArtistTerm;
+    personalization: Personalization;
 };

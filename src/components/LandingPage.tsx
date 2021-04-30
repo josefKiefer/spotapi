@@ -5,8 +5,10 @@ import Authorize from './Authorize';
 import Footer from './Footer';
 import Header from './Header';
 import Home from './home';
-import TopTracks from './TopTracks';
+// import TopTracks from './TopTracks';
 import '../styles.css';
+import TopMedia from './Personalization';
+import { PersonalizationTypes } from '../state/appState';
 
 export default function LandingPage(): JSX.Element {
     const dispatch = useDispatch();
@@ -30,7 +32,27 @@ export default function LandingPage(): JSX.Element {
                 </div>
             </header>
             {window.location.href.includes('code') ? (
-                <TopTracks />
+                <div className="text-center mt-2">
+                    <section
+                        className="page-section try-it justify-content-center"
+                        id="try-it"
+                    >
+                        <div className="container">
+                            <div className="row justify-content-center">
+                                <div className="col">
+                                    <TopMedia
+                                        type={PersonalizationTypes.tracks}
+                                    />
+                                </div>
+                                <div className="col">
+                                    <TopMedia
+                                        type={PersonalizationTypes.artists}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             ) : (
                 <Authorize />
             )}

@@ -37,7 +37,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 # Improvements
 
--   [ ] DRY up track and artist
+-   [x] DRY up track and artist
 -   [ ] Auth flow shouldn't make additional unnecessary requests
 -   [ ] If a request fails because of a token then it should get a new token
 -   [ ] Remove unnecessary bootstrap/styling code
+-   [ ] Accessibility
+-   [ ] Translations(?)
+-   [ ] Unit testing (Jest + Enzyme)
+-   [ ] Page shouldn't render based on auth code in url

@@ -29,7 +29,7 @@ export default function Footer(): JSX.Element {
                         </a>
                         <a
                             className="btn btn-outline-light btn-social mx-1"
-                            href="#!"
+                            href="https://www.linkedin.com/in/josef-kiefer-b8319270/"
                         >
                             <i className="fab fa-fw fa-linkedin-in"></i>
                         </a>
