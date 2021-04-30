@@ -26,7 +26,7 @@ export const authSlice = createSlice({
             .addCase(authorizeAsync.pending, (state) => {
                 state.status = 'pending';
             })
-            .addCase(authorizeAsync.fulfilled, (state, action) => {
+            .addCase(authorizeAsync.fulfilled, (state) => {
                 state.status = 'idle';
             })
             .addCase(getToken.fulfilled, (state, action) => {
@@ -35,7 +35,7 @@ export const authSlice = createSlice({
     },
 });
 
-export const selectVerifier = (state: AppState) => state.auth.verifier;
-export const selectToken = (state: AppState) => state.auth.token;
+export const selectVerifier = (state: AppState): string => state.auth.verifier;
+export const selectToken = (state: AppState): string => state.auth.token;
 
 export default authSlice.reducer;

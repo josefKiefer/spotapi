@@ -4,7 +4,7 @@ import {
     getTopPersonalization,
     selectPersonalization,
 } from '../slices/personalizationSlice';
-import { getToken, selectToken } from '../slices/authSlice';
+import { selectToken } from '../slices/authSlice';
 import { Media, PersonalizationTypes, Term } from '../state/appState';
 
 export type TopMediaProps = {
@@ -19,32 +19,32 @@ export default function TopMedia(props: TopMediaProps): JSX.Element {
     const dispatch = useDispatch();
 
     const [term, setTermState] = useState(Term.medium_term);
-    const [termText, setTermStateText] = useState(
-        'Medium Term (approximately last 6 months)'
+    const [termText, setTermTextState] = useState('Medium Term ');
+    const [termSubtext, setTermSubtextState] = useState(
+        '(approximately last 6 months)'
     );
 
     const setTerm = (term: string) => {
         switch (term) {
             case '0':
                 setTermState(Term.short_term);
-                setTermStateText('Short Term (approximately last 4 weeks)');
+                setTermTextState('Short Term ');
+                setTermSubtextState('(approximately last 4 weeks)');
                 return;
             case '1':
                 setTermState(Term.medium_term);
-                setTermStateText('Medium Term (approximately last 6 months)');
+                setTermTextState('Medium Term');
+                setTermSubtextState('(approximately last 6 months)');
                 return;
             case '2':
                 setTermState(Term.long_term);
-                setTermStateText(
-                    'Long Term (calculated from several years of data and including all new data as it becomes available)'
+                setTermTextState('Long Term');
+                setTermSubtextState(
+                    '(calculated from several years of data and including all new data as it becomes available)'
                 );
                 return;
         }
     };
-
-    if (window.location.href.includes('code') && !token) {
-        dispatch(getToken());
-    }
 
     return (
         <div className="text-center mt-2">
@@ -58,7 +58,7 @@ export default function TopMedia(props: TopMediaProps): JSX.Element {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h2 className="page-section-heading text-center text-uppercase text-secondary mb-5 mt-2">
+                                        <h2 className="page-section-heading text-center text-uppercase text-secondary mb-5 mt-5">
                                             Top {typeAsString}
                                         </h2>
                                     </td>
@@ -84,18 +84,27 @@ export default function TopMedia(props: TopMediaProps): JSX.Element {
                                     <td>
                                         <label
                                             htmlFor="customRange1"
-                                            className="form-label"
+                                            className="form-label mt-2 mb-0"
                                             style={{ color: 'white' }}
                                         >
                                             {termText}
                                         </label>
+                                        <p
+                                            className="mt-0 mb-0"
+                                            style={{
+                                                fontSize: 'smaller',
+                                                color: '#6c757d',
+                                            }}
+                                        >
+                                            {termSubtext}
+                                        </p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <input
                                             type="range"
-                                            className="form-range"
+                                            className="form-range mb-2"
                                             id="customRange1"
                                             min="0"
                                             max="2"

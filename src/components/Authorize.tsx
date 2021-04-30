@@ -1,12 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { authorizeAsync, getToken } from '../slices/authSlice';
+import { authorizeAsync } from '../slices/authSlice';
 
 export default function Authorize(): JSX.Element {
     const dispatch = useDispatch();
 
-    if (window.location.href.includes('code')) {
-        dispatch(getToken());
-    }
     return (
         <div>
             <section

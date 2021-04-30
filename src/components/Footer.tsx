@@ -17,15 +17,9 @@ export default function Footer(): JSX.Element {
                         <h4 className="text-uppercase mb-4">Around the Web</h4>
                         <a
                             className="btn btn-outline-light btn-social mx-1"
-                            href="#!"
+                            href="https://github.com/josefKiefer"
                         >
-                            <i className="fab fa-fw fa-facebook-f"></i>
-                        </a>
-                        <a
-                            className="btn btn-outline-light btn-social mx-1"
-                            href="#!"
-                        >
-                            <i className="fab fa-fw fa-twitter"></i>
+                            <i className="fab fa-fw fa-github"></i>
                         </a>
                         <a
                             className="btn btn-outline-light btn-social mx-1"
@@ -33,16 +27,10 @@ export default function Footer(): JSX.Element {
                         >
                             <i className="fab fa-fw fa-linkedin-in"></i>
                         </a>
-                        <a
-                            className="btn btn-outline-light btn-social mx-1"
-                            href="#!"
-                        >
-                            <i className="fab fa-fw fa-dribbble"></i>
-                        </a>
                     </div>
                     <div className="col-lg-4">
                         <h4 className="text-uppercase mb-4">About Me</h4>
-                        <p className="lead mb-0">I am Joe</p>
+                        <p className="lead mb-0">I&apos;m Joe &#128075;</p>
                     </div>
                 </div>
             </div>

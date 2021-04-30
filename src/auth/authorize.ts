@@ -48,8 +48,6 @@ export const exchangeAuthCodeForToken = async () => {
     }
     params.append('code_verifier', verifier);
 
-    console.log('verifier: ', verifier);
-
     const config = {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
