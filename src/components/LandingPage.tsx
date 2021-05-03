@@ -13,7 +13,6 @@ export default function LandingPage(): JSX.Element {
     const token = useSelector(selectToken);
 
     if (window.location.href.includes('code') && !token) {
-        console.log('Landing page get token');
         dispatch(getToken());
     }
 

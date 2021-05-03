@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { generateCodeChallengeFromVerifier } from './codeVerifierAndChallenge';
 
 const clientId = 'f572c0f35a1e43ccb9031e3373a2a3db';
@@ -32,7 +32,9 @@ const getCookie = (name: string): string | null => {
     return cookie;
 };
 
-export const exchangeAuthCodeForToken = async () => {
+export const exchangeAuthCodeForToken = async (): Promise<
+    AxiosResponse | undefined
+> => {
     const code = window.location.href.split('=')[1];
 
     const params = new URLSearchParams();

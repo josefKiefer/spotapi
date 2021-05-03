@@ -20,6 +20,7 @@
                     ? target
                     : $('[name=' + this.hash.slice(1) + ']');
                 if (target.length) {
+                    // eslint-disable-next-line no-undef
                     anime({
                         targets: 'html, body',
                         scrollTop: target.offset().top - 72,
@@ -54,17 +55,17 @@
     });
 
     // Collapse Navbar
-    var navbarCollapse = function () {
-        if ($('#mainNav').offset().top > 100) {
-            $('#mainNav').addClass('navbar-shrink');
-        } else {
-            $('#mainNav').removeClass('navbar-shrink');
-        }
-    };
+    // var navbarCollapse = function () {
+    //     if ($('#mainNav').offset().top > 100) {
+    //         $('#mainNav').addClass('navbar-shrink');
+    //     } else {
+    //         $('#mainNav').removeClass('navbar-shrink');
+    //     }
+    // };
     // Collapse now if page is not at top
-    navbarCollapse();
+    // navbarCollapse();
     // Collapse the navbar when page is scrolled
-    $(window).scroll(navbarCollapse);
+    // $(window).scroll(navbarCollapse);
 
     // Floating label headings for the contact form
     $(function () {
