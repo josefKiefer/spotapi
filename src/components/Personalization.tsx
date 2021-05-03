@@ -116,7 +116,7 @@ export default function TopMedia(props: TopMediaProps): JSX.Element {
                                         />
                                     </td>
                                 </tr>
-                                {media[term].items.map((media: Media) => (
+                                {media[term].items?.map((media: Media) => (
                                     <tr
                                         key={media.name}
                                         style={{

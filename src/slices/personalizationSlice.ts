@@ -1,5 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import Axios from 'axios';
+import {
+    createAsyncThunk,
+    createSlice,
+    isRejectedWithValue,
+} from '@reduxjs/toolkit';
+import Axios, { AxiosError } from 'axios';
 import {
     AppState,
     Personalization,
@@ -7,6 +11,8 @@ import {
     PersonalizationTypes,
     Term,
 } from '../state/appState';
+import { authorizeAsync } from './authSlice';
+import { handleAxiosError } from './requestMiddlewareSlice';
 
 const initialState: Personalization = {
     [PersonalizationTypes.tracks]: {
@@ -25,7 +31,10 @@ const initialState: Personalization = {
 
 export const getTopPersonalization = createAsyncThunk(
     'personalization/getTopPersonalization',
-    async ({ token, type }: { token: string; type: PersonalizationTypes }) => {
+    async (
+        { token, type }: { token: string; type: PersonalizationTypes },
+        thunkApi
+    ) => {
         const typeAsString = PersonalizationTypes[type];
         const config = {
             headers: {
@@ -35,21 +44,27 @@ export const getTopPersonalization = createAsyncThunk(
         const shortTermResponse = await Axios.get(
             `https://api.spotify.com/v1/me/top/${typeAsString}?time_range=short_term`,
             config
-        );
+        ).catch((axiosError: AxiosError) => {
+            thunkApi.dispatch(handleAxiosError(axiosError));
+        });
         const medTermResponse = await Axios.get(
             `https://api.spotify.com/v1/me/top/${typeAsString}?time_range=medium_term`,
             config
-        );
+        ).catch((axiosError: AxiosError) => {
+            thunkApi.dispatch(handleAxiosError(axiosError));
+        });
         const longTermResponse = await Axios.get(
             `https://api.spotify.com/v1/me/top/${typeAsString}?time_range=long_term`,
             config
-        );
+        ).catch((axiosError: AxiosError) => {
+            thunkApi.dispatch(handleAxiosError(axiosError));
+        });
 
         const personalization: PersonalizationTerm = {
             type: type,
-            [Term.short_term]: shortTermResponse?.data,
-            [Term.medium_term]: medTermResponse?.data,
-            [Term.long_term]: longTermResponse?.data,
+            [Term.short_term]: shortTermResponse ? shortTermResponse.data : [],
+            [Term.medium_term]: medTermResponse ? medTermResponse.data : [],
+            [Term.long_term]: longTermResponse ? longTermResponse?.data : [],
         };
 
         return personalization;
@@ -69,6 +84,9 @@ export const personalizationSlice = createSlice({
             } else {
                 console.error('PersonalizationType not found');
             }
+        });
+        builder.addCase(getTopPersonalization.rejected, (state, action) => {
+            console.log('action: ', action);
         });
     },
 });
