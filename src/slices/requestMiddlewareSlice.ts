@@ -10,6 +10,8 @@ export const handleAxiosError = createAsyncThunk(
             errorMessage.includes('Only valid bearer authentication supported')
         ) {
             thunkApi.dispatch(authorizeAsync());
+        } else {
+            console.log('Uncaught http error: ', axiosError);
         }
     }
 );

@@ -1,8 +1,4 @@
-import {
-    createAsyncThunk,
-    createSlice,
-    isRejectedWithValue,
-} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Axios, { AxiosError } from 'axios';
 import {
     AppState,
@@ -11,7 +7,6 @@ import {
     PersonalizationTypes,
     Term,
 } from '../state/appState';
-import { authorizeAsync } from './authSlice';
 import { handleAxiosError } from './requestMiddlewareSlice';
 
 const initialState: Personalization = {

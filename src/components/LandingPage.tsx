@@ -5,7 +5,7 @@ import Authorize from './Authorize';
 import Footer from './Footer';
 import Header from './Header';
 import '../styles.css';
-import TopMedia from './Personalization';
+import TopMedia from './TopMedia';
 import { PersonalizationTypes } from '../state/appState';
 
 export default function LandingPage(): JSX.Element {
