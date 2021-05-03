@@ -41,10 +41,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 -   [x] Auth flow shouldn't make additional unnecessary requests
 -   [x] If a request fails because of a token then it should get a new token
 -   [x] Remove unnecessary bootstrap/styling code
--   [ ] Accessibility
+-   [x] Accessibility
 -   [ ] Translations(?)
 -   [ ] Unit testing (Jest + Enzyme)
 -   [ ] Page shouldn't render based on auth code in url
 -   [ ] Option to create playlist from top tracks/artists
 -   [ ] Should redirect to Spotify app
 -   [ ] Deploy to the cloud
+-   [ ] Break styles.css into many files (maybe switch to LESS)
