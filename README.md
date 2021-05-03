@@ -42,7 +42,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 -   [x] If a request fails because of a token then it should get a new token
 -   [x] Remove unnecessary bootstrap/styling code
 -   [x] Accessibility
--   [ ] Translations(?)
 -   [ ] Unit testing (Jest + Enzyme)
 -   [ ] Page shouldn't render based on auth code in url
 -   [ ] Option to create playlist from top tracks/artists
