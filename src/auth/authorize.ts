@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { generateCodeChallengeFromVerifier } from './codeVerifierAndChallenge';
 
 const clientId = 'f572c0f35a1e43ccb9031e3373a2a3db';
-const encodedUri = encodeURI('https://main.dl1ogwach3kv6.amplifyapp.com/');
+const encodedUri = encodeURI(window.location.href.split('?')[0]);
 
 export const redirect = async (): Promise<string> => {
     const {
