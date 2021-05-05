@@ -57,6 +57,18 @@ export default function Header(): JSX.Element {
                     </div>
                 </div>
             </nav>
+
+            <header className="bg-primary text-white text-center">
+                <div className="container d-flex align-items-center flex-column">
+                    <h1 className="masthead-heading text-uppercase mb-2">
+                        SpotAPI
+                    </h1>
+                    <div className="divider-custom divider-light">
+                        <div className="divider-custom-line"></div>
+                        <div className="divider-custom-line"></div>
+                    </div>
+                </div>
+            </header>
         </div>
     );
 }

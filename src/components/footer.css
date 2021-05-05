@@ -1,7 +1,11 @@
-footer {
-    left: 0;
+.footer {
+    position: absolute;
     bottom: 0;
-    right: 0;
-    color: #fff;
-    background-color: #000;
+    width: 100%;
+    background-color: black;
+    padding: 1rem 0;
+}
+
+.social-btns {
+    text-align: center;
 }

@@ -5,6 +5,7 @@ import Authorize from './Authorize';
 import Footer from './Footer';
 import Header from './Header';
 import '../styles.css';
+import './LandingPage.css';
 import TopMedia from './TopMedia';
 import { PersonalizationTypes } from '../state/appState';
 
@@ -18,19 +19,8 @@ export default function LandingPage(): JSX.Element {
 
     return (
         <div>
-            <div className="masthead">
+            <div>
                 <Header />
-                <header className="bg-primary text-white text-center">
-                    <div className="container d-flex align-items-center flex-column">
-                        <h1 className="masthead-heading text-uppercase mb-2">
-                            SpotAPI
-                        </h1>
-                        <div className="divider-custom divider-light">
-                            <div className="divider-custom-line"></div>
-                            <div className="divider-custom-line"></div>
-                        </div>
-                    </div>
-                </header>
                 {token ? (
                     <div className="text-center mt-2">
                         <section
@@ -58,7 +48,6 @@ export default function LandingPage(): JSX.Element {
                 )}
                 {/* <Home /> */}
             </div>
-            <Footer />
         </div>
     );
 }
