@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { exchangeAuthCodeForToken, redirect } from '../auth/authorize';
+import { exchangeAuthCodeForToken, redirect } from '../helpers/auth/authorize';
 import { AppState } from '../state/appState';
 
 const initialState = {

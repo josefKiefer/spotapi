@@ -4,11 +4,13 @@ export const initialAuthState = {
     status: 'idle',
 };
 
+// Auth
 export type AuthState = {
     token: string;
     verifier: string;
 };
 
+// Personalization (Top Tracks and Artists)
 export enum Term {
     short_term,
     medium_term,
@@ -22,6 +24,7 @@ export enum PersonalizationTypes {
 
 export type Media = {
     name: string;
+    id: string;
 };
 
 export type PersonalizationTerm = {
@@ -36,7 +39,13 @@ export type Personalization = {
     [PersonalizationTypes.artists]: PersonalizationTerm;
 };
 
+// User
+export type User = {
+    userId: string;
+};
+
 export type AppState = {
     auth: AuthState;
     personalization: Personalization;
+    user: User;
 };

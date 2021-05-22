@@ -11,7 +11,9 @@ export const redirect = async (): Promise<string> => {
     } = await generateCodeChallengeFromVerifier();
     document.cookie = `spotapi-verifier=${verifier}`;
 
-    const scope = encodeURIComponent('user-top-read');
+    const scope = encodeURIComponent(
+        'user-top-read user-read-private playlist-modify-public'
+    );
     window.location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodedUri}&code_challenge_method=S256&code_challenge=${codeChallenge}&scope=${scope}`;
 
     return verifier;

@@ -2,19 +2,24 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getToken, selectToken } from '../slices/authSlice';
 import Authorize from './Authorize';
-import Footer from './Footer';
 import Header from './Header';
 import '../styles.css';
 import './LandingPage.css';
 import TopMedia from './TopMedia';
 import { PersonalizationTypes } from '../state/appState';
+import { getUser, selectUserId } from '../slices/userSlice';
 
 export default function LandingPage(): JSX.Element {
     const dispatch = useDispatch();
     const token = useSelector(selectToken);
+    const userId = useSelector(selectUserId);
 
     if (window.location.href.includes('code') && !token) {
         dispatch(getToken());
+    }
+
+    if (token && !userId) {
+        dispatch(getUser({ token }));
     }
 
     return (

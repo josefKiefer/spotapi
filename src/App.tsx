@@ -24,8 +24,9 @@ export default function App(): JSX.Element {
                         </Switch>
                     </Router>
                 </div>
-                <Footer />
+                <div className="push"></div>
             </div>
+            {/* <Footer /> */}
         </body>
     );
 }

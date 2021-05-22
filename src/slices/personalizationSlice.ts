@@ -9,6 +9,8 @@ import {
 } from '../state/appState';
 import { handleAxiosError } from './requestMiddlewareSlice';
 
+export const personalizationBaseUrl = 'https://api.spotify.com/v1/me/top';
+
 const initialState: Personalization = {
     [PersonalizationTypes.tracks]: {
         type: PersonalizationTypes.tracks,
@@ -37,19 +39,19 @@ export const getTopPersonalization = createAsyncThunk(
             },
         };
         const shortTermResponse = await Axios.get(
-            `https://api.spotify.com/v1/me/top/${typeAsString}?time_range=short_term`,
+            `${personalizationBaseUrl}/${typeAsString}?time_range=short_term`,
             config
         ).catch((axiosError: AxiosError) => {
             thunkApi.dispatch(handleAxiosError(axiosError));
         });
         const medTermResponse = await Axios.get(
-            `https://api.spotify.com/v1/me/top/${typeAsString}?time_range=medium_term`,
+            `${personalizationBaseUrl}/${typeAsString}?time_range=medium_term`,
             config
         ).catch((axiosError: AxiosError) => {
             thunkApi.dispatch(handleAxiosError(axiosError));
         });
         const longTermResponse = await Axios.get(
-            `https://api.spotify.com/v1/me/top/${typeAsString}?time_range=long_term`,
+            `${personalizationBaseUrl}/${typeAsString}?time_range=long_term`,
             config
         ).catch((axiosError: AxiosError) => {
             thunkApi.dispatch(handleAxiosError(axiosError));

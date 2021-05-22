@@ -44,7 +44,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 -   [x] Accessibility
 -   [ ] Unit testing (Jest + Enzyme)
 -   [ ] Page shouldn't render based on auth code in url
--   [ ] Option to create playlist from top tracks/artists
--   [ ] Should redirect to Spotify app
--   [ ] Deploy to the cloud
+-   [x] Option to create playlist from top tracks/artists
+-   [ ] Should redirect to Spotify app (mobile and desktop)
+-   [x] Deploy to the cloud
 -   [ ] Break styles.css into many files (maybe switch to LESS)
+-   [ ] Make landing page more attractive - shouldn't have to authorize to see more stuff
+-   [x] Create playlist functionality
+-   [ ] Fix footer

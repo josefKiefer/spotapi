@@ -6,6 +6,7 @@ import {
 } from '../slices/personalizationSlice';
 import { selectToken } from '../slices/authSlice';
 import { Media, PersonalizationTypes, Term } from '../state/appState';
+import { createPlaylist } from '../slices/playlistSlice';
 
 export type TopMediaProps = {
     type: PersonalizationTypes;
@@ -126,6 +127,33 @@ export default function TopMedia(props: TopMediaProps): JSX.Element {
                                         <td>{media.name}</td>
                                     </tr>
                                 ))}
+                                {type === PersonalizationTypes.tracks ? (
+                                    <tr>
+                                        <td>
+                                            <button
+                                                onClick={() =>
+                                                    dispatch(
+                                                        createPlaylist({
+                                                            trackUris: media[
+                                                                term
+                                                            ].items?.map(
+                                                                (item) =>
+                                                                    item.id
+                                                            ),
+                                                            playlistName:
+                                                                'playlistName',
+                                                        })
+                                                    )
+                                                }
+                                                className="btn btn-primary"
+                                            >
+                                                Create Playlist
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ) : (
+                                    <div />
+                                )}
                             </tbody>
                         </table>
                     </div>
